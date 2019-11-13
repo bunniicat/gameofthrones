@@ -1,13 +1,15 @@
 let diceValue;
 
 const playerOne = {
-    tile: 0,
-    playerTurn: true
+    tile: 1,
+    playerTurn: true,
+    playerToken: 'bunny.png'
 };
 
 const playerTwo = {
-    tile: 0,
-    playerTurn: false
+    tile: 1,
+    playerTurn: false,
+    playerToken: "Player Two"
 };
 
 function theBoard(){
@@ -19,40 +21,47 @@ function theBoard(){
 
 theBoard();
 
+ function placeToken(){
+    document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}"> <img src="bunny.png"> </div>`
+    document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}"> "Second Player" </div>`
+}
+
+placeToken(); 
+
 const roll = document.querySelector('#roll');
 
 roll.addEventListener('click', () => {
-    diceValue = 10;
+    /* diceValue = Math.ceil(Math.random() * 6); */
+    diceValue = 9;
     
     if (playerOne.playerTurn === true) {
-        document.getElementById(`tile${playerOne.tile}`).innerHTML = "";
+        document.getElementById(`token1${playerOne.tile}`).innerHTML = "";
         playerOne.tile = playerOne.tile + diceValue;
-        document.getElementById(`tile${playerOne.tile}`).innerHTML += `<img src="bunny.png">`
+        document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}"> <img src="bunny.png"> </div>`
         console.log(playerOne.tile);
         playerOne.playerTurn = false;
         
     } else {
-        document.getElementById(`tile${playerTwo.tile}`).innerHTML = "";
+        document.getElementById(`token2${playerTwo.tile}`).innerHTML = "";
         playerTwo.tile = playerTwo.tile + diceValue;
-        document.getElementById(`tile${playerTwo.tile}`).innerHTML += `Second Player`
+        document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}"> "Second Player" </div>`
         console.log(playerTwo.tile);
         playerOne.playerTurn = true;
     }
 
-    trapOne();
+    traps();
 })
 
-
-function trapOne(){
-    if (playerOne.tile === 10) {
-        alert('Fuck off!!')
-        setTimeout(() => {
-            document.getElementById(`tile${playerOne.tile}`).innerHTML = "";
+function traps(){
+switch(playerOne.tile){
+    case 10:
+        alert ("Fuck you")
+        setTimeout(() =>{
+            document.getElementById(`token1${playerOne.tile}`).innerHTML = "";
             playerOne.tile = playerOne.tile -= 5;
-            document.getElementById(`tile${playerOne.tile}`).innerHTML += `<img src="bunny.png">`
-            console.log(playerOne.tile);
+            document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}"> <img src="bunny.png"> </div>`
+            console.log("trap one");
         }, 2000)
-            
-    }
-
 }
+}
+ 
