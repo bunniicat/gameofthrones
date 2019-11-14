@@ -3,13 +3,13 @@ let diceValue;
 const playerOne = {
     tile: 1,
     playerTurn: true,
-    playerToken: /* "Get this from local storage" ?? */
+    playerToken: 1
 };
 
 const playerTwo = {
     tile: 1,
     playerTurn: false,
-    playerToken: /* "Get this from local storage" ?? */
+    playerToken: 1
 };
 
 function theBoard(){
