@@ -1,0 +1,51 @@
+.headerBoard h1{
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.topbar{
+    display: grid;
+    grid-template-columns: repeat(3,33.3%);
+
+    &Dice button{
+        background-color: black;
+        font-family: $m-font;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        text-transform: uppercase;
+        font-size: 30px;
+        display: block;
+        margin: auto;
+        cursor: pointer;
+    }
+}
+
+.board-tile{
+    border: 1px solid grey;
+    width: 150px;
+    height: 150px;
+    margin: 15px;
+}
+
+#board-wrapper{
+    display: grid;
+    grid-template-columns: repeat(10,10%);
+}
+
+.start{
+    text-transform: uppercase;
+    text-align: start;
+    font-size: 25px;
+    margin-bottom: -30px;
+}
+
+.finish{
+    text-align: end;
+    font-size: 25px;
+    text-transform: uppercase;
+    margin-top: -30px;
+}
