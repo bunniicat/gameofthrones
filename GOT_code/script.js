@@ -3,13 +3,13 @@ let diceValue;
 const playerOne = {
     tile: 1,
     playerTurn: true,
-    playerToken: 1
+    playerToken: sessionStorage.getItem("playerToken1")
 };
 
 const playerTwo = {
     tile: 1,
     playerTurn: false,
-    playerToken: 1
+    playerToken: sessionStorage.getItem("playerToken2")
 };
 
 function theBoard(){
