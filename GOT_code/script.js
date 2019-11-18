@@ -12,6 +12,9 @@ const playerTwo = {
     playerToken: sessionStorage.getItem("playerToken2")
 };
 
+console.log(playerOne.playerToken);
+console.log(playerTwo.playerToken);
+
 function theBoard(){
     for(i=1; i<31; i++){
         document.getElementById("board-wrapper").innerHTML += `<div id="tile${i}" class="board-tile">
@@ -22,8 +25,8 @@ function theBoard(){
 theBoard();
 
  function placeToken(){
-    document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}"> <img src="bunny.png"> </div>`
-    document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}"> "Second Player" </div>`
+    document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}"> <img src="${playerOne.playerToken}"> </div>`
+    document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}"> <img src="${playerTwo.playerToken} </div>`
 }
 
 placeToken(); 
@@ -33,12 +36,12 @@ const roll = document.querySelector('#roll');
 roll.addEventListener('click', () => {
     diceValue = Math.ceil(Math.random() * 6);
     console.log(diceValue);
-    /* diceValue = 9; */
+    /* diceValue = 9; */    
     
     if (playerOne.playerTurn === true) {
         document.getElementById(`token1${playerOne.tile}`).innerHTML = "";
         playerOne.tile = playerOne.tile + diceValue;
-        document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}"> <img src="bunny.png"> </div>`
+        document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}"> <img src="${playerOne.playerToken}"> </div>`
         /* console.log(playerOne.tile); */
         if (diceValue != 6){
             playerOne.playerTurn = false;
@@ -47,7 +50,7 @@ roll.addEventListener('click', () => {
     } else {
         document.getElementById(`token2${playerTwo.tile}`).innerHTML = "";
         playerTwo.tile = playerTwo.tile + diceValue;
-        document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}"> "Second Player" </div>`
+        document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}"> <img src="${playerTwo.playerToken} </div>`
         /* console.log(playerTwo.tile); */
         if (diceValue != 6){
             playerOne.playerTurn = true;
