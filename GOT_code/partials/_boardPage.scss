@@ -28,7 +28,13 @@
     border: 1px solid grey;
     width: 150px;
     height: 150px;
-    margin: 15px;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+}
+
+.board-tile img{
+    width: 100%;
 }
 
 #board-wrapper{
