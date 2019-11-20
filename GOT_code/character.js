@@ -4,15 +4,23 @@ function getInfo(id){
 .then(charInfo => populateCard(charInfo));
 }
 
-function populateCard(character){
-    document.getElementById("moreInfoWrapper").innerHTML = "";
+const popup = document.getElementById("popup");
 
-    document.getElementById("moreInfoWrapper").innerHTML += `<div class="character-info">
+function populateCard(character){
+    popup.style.display = "block";
+    document.getElementById("popupInfo").innerHTML = "";
+    document.getElementById("popupInfo").innerHTML += `<div class="character-info">
     <p>Character Name: ${character.name}</p>
     <p>Gender: ${character.gender}</p>
     <p>Title: ${character.titles}</p>
     </div>`
 }
+
+window.onclick = function(event) {
+    if (event.target == popup) {
+      popup.style.display = "none";
+    }
+  }
 
 for(i=1; i<11; i++){
     let button = document.getElementById(`btn${i}`);

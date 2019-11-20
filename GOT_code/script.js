@@ -49,7 +49,7 @@ roll.addEventListener('click', () => {
         elem.parentElement.removeChild(elem);
         playerOne.tile = playerOne.tile + diceValue;
         goal(playerOne);
-        document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}"> <img src="${playerOne.playerToken}"> </div>`
+        document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}" class="fadeIn"> <img src="${playerOne.playerToken}"> </div>`
         if (diceValue != 6){
             playerOne.playerTurn = false;
         }
@@ -59,7 +59,7 @@ roll.addEventListener('click', () => {
         elem1.parentElement.removeChild(elem1);
         playerTwo.tile = playerTwo.tile + diceValue;
         goal(playerTwo);
-        document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}"> <img src="${playerTwo.playerToken}" </div>`
+        document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}" class="fadeIn"> <img src="${playerTwo.playerToken}" </div>`
         if (diceValue != 6){
             playerOne.playerTurn = true;
         }
