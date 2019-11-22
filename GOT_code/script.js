@@ -1,4 +1,13 @@
-let diceValue;
+let diceValue;  
+
+document.querySelector(".first").addEventListener("click", function() {
+    swal({
+      title: "You get pushed out of a window, you land on tile 5, have fun in a wheelchair!",
+      showCancelButton: false,
+      confirmButtonText: "OK",
+      confirmButtonColor: "#000000",
+    });
+  });
 
 const playerOne = {
     tile: 1,
@@ -45,21 +54,13 @@ roll.addEventListener('click', () => {
     diceValue = Math.ceil(Math.random() * 6); 
     
     if (playerOne.playerTurn === true) {
-        let elem = document.getElementById(`token1${playerOne.tile}`);
-        elem.parentElement.removeChild(elem);
-        playerOne.tile = playerOne.tile + diceValue;
-        goal(playerOne);
-        document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}" class="fadeIn"> <img src="${playerOne.playerToken}"> </div>`
+        movePlayers(playerOne, playerOne.tokenId);
         if (diceValue != 6){
             playerOne.playerTurn = false;
         }
         
     } else {
-        let elem1 = document.getElementById(`token2${playerTwo.tile}`);
-        elem1.parentElement.removeChild(elem1);
-        playerTwo.tile = playerTwo.tile + diceValue;
-        goal(playerTwo);
-        document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}" class="fadeIn"> <img src="${playerTwo.playerToken}" </div>`
+      movePlayers(playerTwo, playerTwo.tokenId);
         if (diceValue != 6){
             playerOne.playerTurn = true;
         }
@@ -69,46 +70,44 @@ roll.addEventListener('click', () => {
     traps(playerTwo, playerTwo.tokenId);
 })
 
+function movePlayers(player, tokenid){
+    let elem = document.getElementById(`token${tokenid}${player.tile}`);
+    elem.parentElement.removeChild(elem);
+    player.tile = player.tile + diceValue;
+    goal(player);
+    document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
+}
+
 
 
 function traps(player, tokenid){
 switch(player.tile){
     case 10:
-        alert ("You got pushed out of a window, you land at tile 5, have fun in a wheelchair")
-        console.log(tokenid);
-        console.log(player.tile);
+        alert("test");
         remove(document.getElementById(`token${tokenid}${player.tile}`))
         player.tile = player.tile -= 5;
         document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
         break;
     case 22:
         alert ("One of your dragons die, you are not a great pet caretaker, as punishment go back 8 tiles")
-        console.log(tokenid);
-        console.log(player.tile);
         remove(document.getElementById(`token${tokenid}${player.tile}`))
         player.tile = player.tile -= 8;
         document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
         break;
     case 16:
         alert ("Your whole family gets slaughtered at a wedding, you go back 4 tiles while mourning their deaths")
-        console.log(tokenid);
-        console.log(player.tile);
         remove(document.getElementById(`token${tokenid}${player.tile}`))
         player.tile = player.tile -= 4;
         document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
         break;
     case 18:
         alert ("You freed all the slaves, +2 tiles for you!")
-        console.log(tokenid);
-        console.log(player.tile);
         remove(document.getElementById(`token${tokenid}${player.tile}`))
         player.tile = player.tile += 2;
         document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
         break;
     case 25:
         alert ("Jon gets killed by his squire, f*ck Olly, and f*ck you -move back 4 tiles")
-        console.log(tokenid);
-        console.log(player.tile);
         remove(document.getElementById(`token${tokenid}${player.tile}`))
         player.tile = player.tile -= 4;
         document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
