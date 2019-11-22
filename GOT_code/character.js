@@ -1,12 +1,12 @@
-function getInfo(id){
-fetch("https://anapioficeandfire.com/api/characters/" + id)
-.then(response => response.json())
-.then(charInfo => populateCard(charInfo));
+function getInfo(id) {
+    fetch("https://anapioficeandfire.com/api/characters/" + id)
+        .then(response => response.json())
+        .then(charInfo => populateCard(charInfo));
 }
 
 const popup = document.getElementById("popup");
 
-function populateCard(character){
+function populateCard(character) {
     popup.style.display = "block";
     document.getElementById("popupInfo").innerHTML = "";
     document.getElementById("popupInfo").innerHTML += `<div class="character-info">
@@ -16,16 +16,17 @@ function populateCard(character){
     </div>`
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == popup) {
-      popup.style.display = "none";
+        popup.style.display = "none";
     }
-  }
+}
 
-for(i=1; i<11; i++){
+for (i = 1; i < 11; i++) {
     let button = document.getElementById(`btn${i}`);
     button.onclick = saveTokens;
-    function saveTokens(){
+
+    function saveTokens() {
         if ("playerToken1" in sessionStorage) {
             sessionStorage.setItem("playerToken2", this.getAttribute("data-image"));
             sessionStorage.setItem("playerName2", this.getAttribute("data-name"));
@@ -38,4 +39,3 @@ for(i=1; i<11; i++){
         }
     }
 }
-
