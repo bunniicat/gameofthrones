@@ -14,7 +14,7 @@ const playerOne = {
     playerTurn: true,
     playerToken: sessionStorage.getItem("playerToken1"),
     tokenId: 1,
-    playerName: "Player One"
+    playerName: sessionStorage.getItem("playerName1")
 };
 
 const playerTwo = {
@@ -22,11 +22,21 @@ const playerTwo = {
     playerTurn: false,
     playerToken: sessionStorage.getItem("playerToken2"),
     tokenId: 2,
-    playerName: "Player Two"
+    playerName: sessionStorage.getItem("playerName2")
 };
 
-console.log(playerOne.playerToken);
-console.log(playerTwo.playerToken);
+function whoseTurn(){
+    const turn = document.getElementById("displayTurn");
+    if (playerOne.playerTurn === true) {
+        turn.innerHTML = "";
+        turn.innerHTML += `<p>${playerOne.playerName}, it is your turn to roll the dice!</p>`
+    } else {
+        turn.innerHTML = "";
+        turn.innerHTML += `<p>${playerTwo.playerName}, it is your turn to roll the dice!</p>`
+    }
+}
+
+whoseTurn();
 
 function theBoard(){
     for(i=1; i<31; i++){
@@ -68,6 +78,7 @@ roll.addEventListener('click', () => {
 
     traps(playerOne, playerOne.tokenId);
     traps(playerTwo, playerTwo.tokenId);
+    whoseTurn();
 })
 
 function movePlayers(player, tokenid){
