@@ -49,7 +49,7 @@ whoseTurn();
 
 function theBoard() {
     for (i = 1; i < 31; i++) {
-        document.getElementById("board-wrapper").innerHTML += `<div id="tile${i}" class="board-tile">
+        document.getElementById("board-wrapper").innerHTML += `<div id="tile${i}" class="board-tile"><p class="board-tile-number">Tile ${i}</p>
         </div>`
     }
     document.getElementById("tile10").classList.add("trap");
@@ -66,8 +66,8 @@ function remove(elem) {
 theBoard();
 
 function placeToken() {
-    document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}"> <img src="${playerOne.playerToken}"> </div>`
-    document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}"> <img src="${playerTwo.playerToken}"> </div>`
+    document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}" class="bounceIn"> <img src="${playerOne.playerToken}"> </div>`
+    document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}" class="bounceIn"> <img src="${playerTwo.playerToken}"> </div>`
 }
 
 placeToken();
@@ -101,7 +101,7 @@ function movePlayers(player, tokenid) {
     elem.parentElement.removeChild(elem);
     player.tile = player.tile + diceValue;
     goal(player);
-    document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
+    document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}" class="bounceIn"> <img src="${player.playerToken}">  </div>`
 }
 
 
