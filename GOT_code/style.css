@@ -107,6 +107,13 @@ body {
   width: 100%;
 }
 
+.trap {
+  background-image: url(/resources/etc/question-mark.svg);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 #board-wrapper {
   display: grid;
   grid-template-columns: repeat(10, 10%);

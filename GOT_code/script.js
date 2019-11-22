@@ -52,6 +52,11 @@ function theBoard() {
         document.getElementById("board-wrapper").innerHTML += `<div id="tile${i}" class="board-tile">
         </div>`
     }
+    document.getElementById("tile10").classList.add("trap");
+    document.getElementById("tile22").classList.add("trap");
+    document.getElementById("tile16").classList.add("trap");
+    document.getElementById("tile18").classList.add("trap");
+    document.getElementById("tile25").classList.add("trap");
 }
 
 function remove(elem) {
