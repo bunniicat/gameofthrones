@@ -17,23 +17,20 @@ const playerTwo = {
 };
 
 function whoseTurn() {
-    const turn = document.getElementById("displayTurn");
     if (playerOne.playerTurn === true) {
-        turn.innerHTML = "";
-        if (diceValue === 6) {
-            turn.innerHTML += `<p>${playerOne.playerName}, you rolled a 6, you get to roll again!</p>`
-        } else {
-            turn.innerHTML += `<p>${playerOne.playerName}, it is your turn to roll the dice!</p>`
-        }
-    
+        showTurn(playerOne);
     } else {
-        turn.innerHTML = "";
-        if (diceValue === 6) {
-            turn.innerHTML += `<p>${playerTwo.playerName}, you rolled a 6, you get to roll again!</p>`
-        } else {
-            turn.innerHTML += `<p>${playerTwo.playerName}, it is your turn to roll the dice!</p>`
-        }
-        
+        showTurn(playerTwo);   
+    }
+}
+
+function showTurn(player){
+    const turn = document.getElementById("displayTurn");
+    turn.innerHTML = "";
+    if(diceValue === 6){
+        turn.innerHTML += `<p>${player.playerName}, you rolled a 6, you get to roll again!</p>`
+    } else {
+        turn.innerHTML += `<p>${player.playerName}, it is your turn to roll the dice!</p>`
     }
 }
 
