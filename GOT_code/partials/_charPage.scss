@@ -6,42 +6,17 @@
     }
 }
 
-
-.characters{
+.profile{
     display: grid;
-    grid-template-columns: repeat(5,20%);
-    margin: 20px;
+    grid-template-columns: repeat(3, 33.3%);
     
-    &Card{
-        border: 1px solid grey;
-        margin: 30px;
-
-        &Img img{
-            display: block;
-            margin: auto;
-        }
-
-        &Info{
-            text-align: center;
-        }
-        &Info button{
-            background-color: black;
-            text-transform: uppercase;
-            color: white;
-            border-radius: 5px;
-            border: none;
-            padding: 5px 10px;
-            margin-bottom: 10px;
-            font-family: $m-font;
-            width: 100px;
-            height: 30px;
-        }
-        &Info p{
-            font-family: $h-font;
-            text-transform: uppercase;
-        }
+    &-card img{
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 70%;
+        margin-top: 50px;
     }
-
 }
 
 .start-btn{

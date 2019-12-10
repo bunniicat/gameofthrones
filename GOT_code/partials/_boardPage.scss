@@ -85,7 +85,7 @@
     height: 100%;
     overflow: scroll !important;
     background-color: rga(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.493);
     text-align: center;
 
     &Content{
@@ -93,8 +93,10 @@
         padding: 40px;
         border: none;
         max-width: 60%;
-        background-color: rgb(54, 54, 54);
+        background-color: #F28177;
+        border-radius: 20px;
         color: white;
+        margin-top: 20px;
     }
   }
 

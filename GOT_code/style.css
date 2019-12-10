@@ -1,18 +1,27 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap");
 @font-face {
-  font-family: got;
-  src: url(resources/fonts/gotfont.ttf);
+  font-family: love;
+  src: url(resources/fonts/lovehearts.ttf);
 }
 h1 {
-  font-family: "Got", serif;
+  font-family: "love", serif;
+}
+
+h2 {
+  font-family: "Raleway", sans-serif;
 }
 
 p {
-  font-family: "Roboto Slab", serif;
+  font-family: "Raleway", sans-serif;
 }
 
 body {
-  background-color: #F9F9F9;
+  background: #74ebd5;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #ACB6E5, #acd0e5);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #ACB6E5, #accbe5);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .header {
@@ -23,42 +32,21 @@ body {
   font-size: 60px;
 }
 
-.characters {
+.profile {
   display: grid;
-  grid-template-columns: repeat(5, 20%);
-  margin: 20px;
+  grid-template-columns: repeat(3, 33.3%);
 }
-.charactersCard {
-  border: 1px solid grey;
-  margin: 30px;
-}
-.charactersCardImg img {
+.profile-card img {
+  margin-left: auto;
+  margin-right: auto;
   display: block;
-  margin: auto;
-}
-.charactersCardInfo {
-  text-align: center;
-}
-.charactersCardInfo button {
-  background-color: black;
-  text-transform: uppercase;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  font-family: "Roboto Slab", serif;
-  width: 100px;
-  height: 30px;
-}
-.charactersCardInfo p {
-  font-family: "Got", serif;
-  text-transform: uppercase;
+  width: 70%;
+  margin-top: 50px;
 }
 
 .start-btn {
   background-color: black;
-  font-family: "Roboto Slab", serif;
+  font-family: "Raleway", sans-serif;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -82,7 +70,7 @@ body {
 }
 .topbarDice button {
   background-color: black;
-  font-family: "Roboto Slab", serif;
+  font-family: "Raleway", sans-serif;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -153,7 +141,7 @@ body {
   height: 100%;
   overflow: scroll !important;
   background-color: rga(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.493);
   text-align: center;
 }
 .popupContent {
@@ -161,13 +149,15 @@ body {
   padding: 40px;
   border: none;
   max-width: 60%;
-  background-color: #363636;
+  background-color: #F28177;
+  border-radius: 20px;
   color: white;
+  margin-top: 20px;
 }
 
 .winnerAnnouncement {
   font-size: 40px;
-  font-family: "Got", serif;
+  font-family: "love", serif;
 }
 
 .playAgainBtn button {
@@ -178,7 +168,7 @@ body {
   border: none;
   font-size: 30px;
   text-transform: uppercase;
-  font-family: "Roboto Slab", serif;
+  font-family: "Raleway", sans-serif;
   margin-top: 40px;
 }
 
