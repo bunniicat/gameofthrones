@@ -1,19 +1,19 @@
 let diceValue;
 
+let yourMatch = sessionStorage.getItem("yourMatch");
+
 const playerOne = {
     tile: 1,
     playerTurn: true,
-    playerToken: sessionStorage.getItem("playerToken1"),
-    tokenId: 1,
-    playerName: sessionStorage.getItem("playerName1")
+    playerToken: "resources/chars/7.svg",
+    tokenId: 1
 };
 
 const playerTwo = {
     tile: 1,
     playerTurn: false,
-    playerToken: sessionStorage.getItem("playerToken2"),
-    tokenId: 2,
-    playerName: sessionStorage.getItem("playerName2")
+    playerToken: "resources/symbols/unmatch.svg",
+    tokenId: 2
 };
 
 function whoseTurn() {
@@ -23,29 +23,6 @@ function whoseTurn() {
         showTurn(playerTwo);   
     }
 }
-
-function showTurn(player){
-    const turn = document.getElementById("displayTurn");
-    turn.innerHTML = "";
-    if(diceValue === 6){
-        turn.innerHTML += `<p>${player.playerName}, you rolled a 6, you get to roll again!</p>`
-    } else {
-        turn.innerHTML += `<p>${player.playerName}, it is your turn to roll the dice!</p>`
-    }
-}
-
-function youRolled() {
-    const rolled = document.getElementById("displayRoll");
-    if (playerOne.playerTurn === false) {
-        rolled.innerHTML = "";
-        rolled.innerHTML += `<p>${playerOne.playerName}, you rolled a ${diceValue}!</p>`
-    } else {
-        rolled.innerHTML = "";
-        rolled.innerHTML += `<p>${playerTwo.playerName}, you rolled a ${diceValue}!</p>`
-    }
-}
-
-whoseTurn();
 
 function theBoard() {
     for (i = 1; i < 31; i++) {
@@ -68,6 +45,7 @@ theBoard();
 function placeToken() {
     document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}" class="bounceIn"> <img src="${playerOne.playerToken}"> </div>`
     document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}" class="bounceIn"> <img src="${playerTwo.playerToken}"> </div>`
+    document.getElementById("tile30").innerHTML += `<div class="match-tile"> <img src="resources/chars/${yourMatch}.svg"> </div>`
 }
 
 placeToken();
@@ -92,8 +70,6 @@ roll.addEventListener('click', () => {
 
     traps(playerOne, playerOne.tokenId);
     traps(playerTwo, playerTwo.tokenId);
-    whoseTurn();
-    youRolled();
 })
 
 function movePlayers(player, tokenid) {
@@ -110,7 +86,7 @@ function traps(player, tokenid) {
     switch (player.tile) {
         case 10:
             swal({
-                title: "You get pushed out of a window, you land on tile 5, have fun in a wheelchair!",
+                title: "Your match left your message on seen, go back five tiles..",
                 showCancelButton: false,
                 confirmButtonText: "OK",
                 confirmButtonColor: "#000000",
