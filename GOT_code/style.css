@@ -32,6 +32,10 @@ body {
   font-size: 60px;
 }
 
+#instructions {
+  font-family: "love", serif;
+}
+
 .profile {
   display: grid;
   grid-template-columns: repeat(3, 33.3%);
@@ -174,16 +178,17 @@ body {
   padding: 40px;
   border: none;
   max-width: 60%;
-  background-color: #F28177;
+  background-color: #f68f9d;
   border-radius: 20px;
   color: white;
-  margin-top: 20px;
+  margin-top: 60px;
   font-size: 20px;
 }
 
 .winnerAnnouncement {
   font-size: 40px;
   font-family: "love", serif;
+  margin: 15px;
 }
 
 .playAgainBtn button {

@@ -6,23 +6,17 @@ const playerOne = {
     tile: 1,
     playerTurn: true,
     playerToken: "resources/chars/7.svg",
-    tokenId: 1
+    tokenId: 1,
+    playerName: "Jon Snow"
 };
 
 const playerTwo = {
     tile: 1,
     playerTurn: false,
     playerToken: "resources/symbols/unmatch.svg",
-    tokenId: 2
+    tokenId: 2,
+    playerName: "Unmatch"
 };
-
-function whoseTurn() {
-    if (playerOne.playerTurn === true) {
-        showTurn(playerOne);
-    } else {
-        showTurn(playerTwo);   
-    }
-}
 
 function theBoard() {
     for (i = 1; i < 31; i++) {
@@ -53,11 +47,14 @@ placeToken();
 const roll = document.querySelector('#roll');
 
 roll.addEventListener('click', () => {
-    diceValue = Math.ceil(Math.random() * 6);
+     diceValue = Math.ceil(Math.random() * 6);
+
 
     if (playerOne.playerTurn === true) {
         movePlayers(playerOne, playerOne.tokenId);
-        updateBar(playerOne.tile)
+        updateBar(playerOne.tile);
+        traps(playerOne);
+        displayRoll(playerOne);
         if (diceValue != 6) {
             console.log("make it player 2 turns runs!")
             playerOne.playerTurn = false;
@@ -66,14 +63,12 @@ roll.addEventListener('click', () => {
     } else {
         movePlayers(playerTwo, playerTwo.tokenId);
         updateBarUnmatch(playerTwo.tile)
+        displayRoll(playerTwo);
         if (diceValue != 6) {
             console.log("make it player 1 turns runs!")
             playerOne.playerTurn = true;
         }
     }
-
-    traps(playerOne, playerOne.tokenId);
-    traps(playerTwo, playerTwo.tokenId);
 })
 
 function movePlayers(player, tokenid) {
@@ -84,88 +79,117 @@ function movePlayers(player, tokenid) {
     document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}" class="bounceIn"> <img src="${player.playerToken}">  </div>`
 }
 
+function displayRoll(player){
+    document.getElementById("displayRoll").innerHTML = "";
+    if (diceValue != 6){
+    document.getElementById("displayRoll").innerHTML += `<p>${player.playerName} rolled a ${diceValue}!</p>`
+    } else {
+        document.getElementById("displayRoll").innerHTML += `<p>${player.playerName} rolled a 6, ${player.playerName} gets to roll again!</p>`
+    }
+}
 
-
-function traps(player, tokenid) {
+function traps(player) {
     switch (player.tile) {
         case 10:
             swal({
                 title: "OUCH: SEEN",
-                text: "Sorry mate, they left you on seen.. they are 5 steps closer to unmatching you and you need to step up your game.",
-                imageUrl: "https://i.imgur.com/8pTfU1L.jpg",
+                text: "Poor Jon Snow, they left him on seen.. his match is 5 steps closer to unmatching him and he need to step up his game.",
+                imageUrl: "https://puu.sh/EOlMl.jpg",
                 imageWidth: 500,
                 imageHeight: 150,
                 showCancelButton: false,
-                confirmButtonText: "OK",
+                confirmButtonText: "FML",
                 confirmButtonColor: "#f68f9d",
             });
             remove(document.getElementById(`token2${playerTwo.tile}`))
             playerTwo.tile = playerTwo.tile += 5;
-            document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token1${playerTwo.tile}"> <img src="${playerTwo.playerToken}">  </div>`
+            document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}" class="bounceIn"> <img src="${playerTwo.playerToken}">  </div>`
+            updateBarUnmatch(playerTwo.tile)
             break;
         case 22:
             swal({
                 title: "HEARTHTHROB: COOL TITLE",
-                text: "Good job mate, flash that title for what its worth, you impressed your match! You are 2 steps closed to finding the love of your life.",
-                imageUrl: "https://i.imgur.com/LZ5d7IV.jpg",
+                text: "Good job Jon Snow, flashing that title for what its worth, he impressed his match! He is 2 steps closer to finding the love of his life.",
+                imageUrl: "https://puu.sh/EOlQs.png",
                 imageWidth: 500,
                 imageHeight: 200,
                 showCancelButton: false,
-                confirmButtonText: "OK",
+                confirmButtonText: "GUCCI",
                 confirmButtonColor: "#f68f9d",
             });
             remove(document.getElementById(`token1${playerOne.tile}`))
             playerOne.tile = playerOne.tile += 2;
-            document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}"> <img src="${playerOne.playerToken}">  </div>`
+            document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}" class="bounceIn"> <img src="${playerOne.playerToken}">  </div>`
             break;
         case 16:
             swal({
                 title: "OUCH: THE EX",
-                text: "Too bad mate, this takes your match 4 steps closed to unmatching you.",
-                imageUrl: "https://i.imgur.com/LZ5d7IV.jpg",
+                text: "Too bad Jon Snow, this moves his match 4 steps closer to unmatching him.",
+                imageUrl: "https://puu.sh/EOlRO.jpg",
                 imageWidth: 500,
-                imageHeight: 200,
+                imageHeight: 150,
                 showCancelButton: false,
-                confirmButtonText: "OK",
+                confirmButtonText: "FML",
                 confirmButtonColor: "#f68f9d",
             });
             remove(document.getElementById(`token2${playerTwo.tile}`))
             playerTwo.tile = playerTwo.tile += 4;
-            document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}"> <img src="${playerTwo.playerToken}"> </div>`
+            document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}" class="bounceIn"> <img src="${playerTwo.playerToken}"> </div>`
+            updateBarUnmatch(playerTwo.tile)
             break;
         case 18:
             swal({
-                title: "You freed all the slaves, +2 tiles for you!",
+                title: "HEARTHTHROB: FUNNY LINES",
+                text: "Jon Snow made his match laugh with his witty lines, he moves up 3 tiles!",
+                imageUrl: "https://puu.sh/EOlRo.jpg",
+                imageWidth: 500,
+                imageHeight: 200,
                 showCancelButton: false,
-                confirmButtonText: "OK",
-                confirmButtonColor: "#000000",
+                confirmButtonText: "GUCCI",
+                confirmButtonColor: "#f68f9d",
             });
-            remove(document.getElementById(`token${tokenid}${player.tile}`))
-            player.tile = player.tile += 2;
-            document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
+            remove(document.getElementById(`token1${playerOne.tile}`))
+            playerOne.tile = playerOne.tile += 3;
+            document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}" class="bounceIn"> <img src="${playerOne.playerToken}">  </div>`
             break;
         case 25:
             swal({
-                title: "Jon gets killed by his squire, f*ck Olly, and f*ck you -move back 4 tiles",
+                title: "OUCH: OVERSHARING",
+                text: "Ops, maybe he should keep his parental issues to himself, his match ain't no shrink. His match moves 4 steps closer to unmatching him.",
+                imageUrl: "https://puu.sh/EOlQQ.jpg",
+                imageWidth: 500,
+                imageHeight: 270,
                 showCancelButton: false,
-                confirmButtonText: "OK",
-                confirmButtonColor: "#000000",
+                confirmButtonText: "FML",
+                confirmButtonColor: "#f68f9d",
             });
-            remove(document.getElementById(`token${tokenid}${player.tile}`))
-            player.tile = player.tile -= 4;
-            document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
+            remove(document.getElementById(`token2${playerTwo.tile}`))
+            playerTwo.tile = playerTwo.tile += 4;
+            document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}" class="bounceIn"> <img src="${playerTwo.playerToken}">  </div>`
+            updateBarUnmatch(playerTwo.tile)
             break;
     }
 }
 
-function announceWinner() {
+function announceResult() {
     if ("winner" in sessionStorage) {
         const popup = document.getElementById("popup");
         popup.style.display = "block";
-        winnerName = sessionStorage.getItem("winner");
-        winnerAvatar = sessionStorage.getItem("winnerToken");
+        let winnerName = sessionStorage.getItem("winner");
+        let winnerAvatar = sessionStorage.getItem("winnerToken");
         document.getElementById("winner").innerHTML += `<div class="winnerAnnouncement">Congratulations, ${winnerName}!</div>
-        <div class="winnerToken"><img src="${winnerAvatar}"></div>
+        <div class="winnerToken"><img src="${winnerAvatar}"> <img src="resources/symbols/like.svg" width="150"> <img src="resources/chars/${yourMatch}.svg"></div>
+        <div class="winnerDescription"><p>Jon Snow managed to woo his match, true love starts with a swipe to the right!</p></div>
+        <div class="playAgainBtn"><a href="character-select.html"><button onclick="playAgain()">Play again</button></a></div>`
+    }
+    if ("loser" in sessionStorage) {
+        console.log("you lost")
+        const popup = document.getElementById("popup");
+        popup.style.display = "block";
+        let loserAvatar = sessionStorage.getItem("loserToken");
+        document.getElementById("winner").innerHTML += `<div class="winnerAnnouncement">Jon Snow got unmatched, ouch!</div>
+        <div class="winnerToken"><img src="${loserAvatar}"></div>
+        <div class="winnerDescription"><p>The potential love of his life decided he just was not the thing for them. After ghosting him they just unmatched his sorry ass.</p></div>
         <div class="playAgainBtn"><a href="character-select.html"><button onclick="playAgain()">Play again</button></a></div>`
     }
 }
@@ -173,9 +197,15 @@ function announceWinner() {
 function goal(player) {
     if (player.tile >= 30) {
         player.tile = 30
-        sessionStorage.setItem("winner", player.playerName)
-        sessionStorage.setItem("winnerToken", player.playerToken)
-        announceWinner();
+        if (playerOne.tile === 30) {
+            sessionStorage.setItem("winner", player.playerName)
+            sessionStorage.setItem("winnerToken", player.playerToken)
+        } 
+        if (playerTwo.tile === 30) {
+            sessionStorage.setItem("loser", player.playerName)
+            sessionStorage.setItem("loserToken", player.playerToken)
+        }
+        announceResult();
     }
 }
 
