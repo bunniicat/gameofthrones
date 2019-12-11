@@ -7,8 +7,8 @@
 
 .topbar{
     display: grid;
-    grid-template-columns: repeat(3,33.3%);
     text-align: center;
+    grid-template-columns: repeat(3,33.3%);
     font-size: 20px;
 
     &Dice button{
@@ -115,4 +115,29 @@
       text-transform: uppercase;
       font-family: $m-font;
       margin-top: 40px;
+  }
+
+  #myProgress {
+    width: 100%;
+    height: 32px;
+    border-radius: 5px;
+    background-color: rgb(125, 52, 42);
+    position: relative;
+    img {
+        width: 6%;
+        right: 3px;
+        top: 2px;
+        position: absolute;
+    }
+  }
+
+  #barProgress{
+  }
+  
+  #myBar {
+    width: 1%;
+    height: 30px;
+    background-color: #D75A4A;
+    border-radius: 5px;
+    border: 1px solid rgb(177, 74, 60);
   }

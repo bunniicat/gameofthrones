@@ -88,8 +88,8 @@ body {
 
 .topbar {
   display: grid;
-  grid-template-columns: repeat(3, 33.3%);
   text-align: center;
+  grid-template-columns: repeat(3, 33.3%);
   font-size: 20px;
 }
 .topbarDice button {
@@ -196,6 +196,28 @@ body {
   text-transform: uppercase;
   font-family: "Raleway", sans-serif;
   margin-top: 40px;
+}
+
+#myProgress {
+  width: 100%;
+  height: 32px;
+  border-radius: 5px;
+  background-color: #7d342a;
+  position: relative;
+}
+#myProgress img {
+  width: 6%;
+  right: 3px;
+  top: 2px;
+  position: absolute;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #D75A4A;
+  border-radius: 5px;
+  border: 1px solid #b14a3c;
 }
 
 /*# sourceMappingURL=style.css.map */

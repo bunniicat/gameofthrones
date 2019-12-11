@@ -57,6 +57,7 @@ roll.addEventListener('click', () => {
 
     if (playerOne.playerTurn === true) {
         movePlayers(playerOne, playerOne.tokenId);
+        updateBar(playerOne.tile)
         if (diceValue != 6) {
             playerOne.playerTurn = false;
         }
@@ -165,4 +166,14 @@ function goal(player) {
 
 function playAgain() {
     sessionStorage.clear();
+}
+
+function updateBar(tile){
+    var mathWidth =  tile * 3.33
+    var elem = document.getElementById("myBar");
+    var displayProgress = document.getElementById("barProgress");
+    elem.style.width = mathWidth + "%";
+    var roundWidth = Math.ceil(mathWidth)
+    displayProgress.innerHTML = "";
+    displayProgress.innerHTML += `<p>Love Meter Match Progress: ${roundWidth}%</p>`;
 }
