@@ -6,7 +6,7 @@ const playerOne = {
     tile: 1,
     playerTurn: true,
     playerToken: "resources/chars/7.svg",
-    tokenId: 1,
+    tokenId: 1, //token id is used to identify the correct div for innerHTML clear upon moving characters
     playerName: "Jon Snow"
 };
 
@@ -14,10 +14,11 @@ const playerTwo = {
     tile: 1,
     playerTurn: false,
     playerToken: "resources/symbols/unmatch.svg",
-    tokenId: 2,
+    tokenId: 2, //token id is used to identify the correct div for innerHTML clear upon moving characters
     playerName: "Unmatch"
 };
 
+//creates 30 tiles with an unique id, i = 1
 function theBoard() {
     for (i = 1; i < 31; i++) {
         document.getElementById("board-wrapper").innerHTML += `<div id="tile${i}" class="board-tile"><p class="board-tile-number">Tile ${i}</p>
@@ -30,15 +31,17 @@ function theBoard() {
     document.getElementById("tile25").classList.add("trap");
 }
 
+//used in traps switch function
 function remove(elem) {
     elem.parentElement.removeChild(elem)
 }
 
 theBoard();
 
+//by use of unique tile id places player tokens in tile !wrapped in divs with unique token for correct innerHTML clear
 function placeToken() {
-    document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}" class="bounceIn"> <img src="${playerOne.playerToken}"> </div>`
-    document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}" class="bounceIn"> <img src="${playerTwo.playerToken}"> </div>`
+    document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}" class="bounceIn"> <img src="${playerOne.playerToken}" alt="player token"> </div>`
+    document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}" class="bounceIn"> <img src="${playerTwo.playerToken}" alt="player token"> </div>`
     document.getElementById("tile30").innerHTML += `<div class="match-tile"> <img src="resources/chars/${yourMatch}.svg"> </div>`
 }
 
@@ -49,14 +52,12 @@ const roll = document.querySelector('#roll');
 roll.addEventListener('click', () => {
      diceValue = Math.ceil(Math.random() * 6);
 
-
     if (playerOne.playerTurn === true) {
         movePlayers(playerOne, playerOne.tokenId);
         updateBar(playerOne.tile);
         traps(playerOne);
         displayRoll(playerOne);
         if (diceValue != 6) {
-            console.log("make it player 2 turns runs!")
             playerOne.playerTurn = false;
         }
 
@@ -65,18 +66,18 @@ roll.addEventListener('click', () => {
         updateBarUnmatch(playerTwo.tile)
         displayRoll(playerTwo);
         if (diceValue != 6) {
-            console.log("make it player 1 turns runs!")
             playerOne.playerTurn = true;
         }
     }
 })
 
+//moves the players, takes in two parameters = player obj, unique token id
 function movePlayers(player, tokenid) {
     let elem = document.getElementById(`token${tokenid}${player.tile}`);
     elem.parentElement.removeChild(elem);
     player.tile = player.tile + diceValue;
     goal(player);
-    document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}" class="bounceIn"> <img src="${player.playerToken}">  </div>`
+    document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}" class="bounceIn"> <img src="${player.playerToken}" alt="player token">  </div>`
 }
 
 function displayRoll(player){
@@ -88,6 +89,7 @@ function displayRoll(player){
     }
 }
 
+//is only called fpr player one aka jon snow, either helps jon snow or adds progress towards unmatch
 function traps(player) {
     switch (player.tile) {
         case 10:
@@ -232,3 +234,15 @@ function updateBarUnmatch(tile){
     displayProgress.innerHTML = "";
     displayProgress.innerHTML += `<p>Unmatch Meter Match Progress: ${roundWidth}%</p>`;
 }
+
+function instruct() {
+    const popup = document.getElementById("instructions");
+    popup.style.display = "block";
+    window.onclick = function (event) {
+        if (event.target == popup || event.target !== popup) {
+            popup.style.display = "none";
+        }
+    }
+}
+
+setTimeout(instruct, 1500);
