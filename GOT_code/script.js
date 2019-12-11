@@ -59,12 +59,15 @@ roll.addEventListener('click', () => {
         movePlayers(playerOne, playerOne.tokenId);
         updateBar(playerOne.tile)
         if (diceValue != 6) {
+            console.log("make it player 2 turns runs!")
             playerOne.playerTurn = false;
         }
 
     } else {
         movePlayers(playerTwo, playerTwo.tokenId);
+        updateBarUnmatch(playerTwo.tile)
         if (diceValue != 6) {
+            console.log("make it player 1 turns runs!")
             playerOne.playerTurn = true;
         }
     }
@@ -87,36 +90,48 @@ function traps(player, tokenid) {
     switch (player.tile) {
         case 10:
             swal({
-                title: "Your match left your message on seen, go back five tiles..",
+                title: "OUCH: SEEN",
+                text: "Sorry mate, they left you on seen.. they are 5 steps closer to unmatching you and you need to step up your game.",
+                imageUrl: "https://i.imgur.com/8pTfU1L.jpg",
+                imageWidth: 500,
+                imageHeight: 150,
                 showCancelButton: false,
                 confirmButtonText: "OK",
-                confirmButtonColor: "#000000",
+                confirmButtonColor: "#f68f9d",
             });
-            remove(document.getElementById(`token${tokenid}${player.tile}`))
-            player.tile = player.tile -= 5;
-            document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
+            remove(document.getElementById(`token2${playerTwo.tile}`))
+            playerTwo.tile = playerTwo.tile += 5;
+            document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token1${playerTwo.tile}"> <img src="${playerTwo.playerToken}">  </div>`
             break;
         case 22:
             swal({
-                title: "One of your dragons die, you are not a great pet caretaker, as punishment go back 8 tiles",
+                title: "HEARTHTHROB: COOL TITLE",
+                text: "Good job mate, flash that title for what its worth, you impressed your match! You are 2 steps closed to finding the love of your life.",
+                imageUrl: "https://i.imgur.com/LZ5d7IV.jpg",
+                imageWidth: 500,
+                imageHeight: 200,
                 showCancelButton: false,
                 confirmButtonText: "OK",
-                confirmButtonColor: "#000000",
+                confirmButtonColor: "#f68f9d",
             });
-            remove(document.getElementById(`token${tokenid}${player.tile}`))
-            player.tile = player.tile -= 8;
-            document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
+            remove(document.getElementById(`token1${playerOne.tile}`))
+            playerOne.tile = playerOne.tile += 2;
+            document.getElementById(`tile${playerOne.tile}`).innerHTML += `<div id="token1${playerOne.tile}"> <img src="${playerOne.playerToken}">  </div>`
             break;
         case 16:
             swal({
-                title: "Your whole family gets slaughtered at a wedding, you go back 4 tiles while mourning their deaths",
+                title: "OUCH: THE EX",
+                text: "Too bad mate, this takes your match 4 steps closed to unmatching you.",
+                imageUrl: "https://i.imgur.com/LZ5d7IV.jpg",
+                imageWidth: 500,
+                imageHeight: 200,
                 showCancelButton: false,
                 confirmButtonText: "OK",
-                confirmButtonColor: "#000000",
+                confirmButtonColor: "#f68f9d",
             });
-            remove(document.getElementById(`token${tokenid}${player.tile}`))
-            player.tile = player.tile -= 4;
-            document.getElementById(`tile${player.tile}`).innerHTML += `<div id="token${tokenid}${player.tile}"> <img src="${player.playerToken}">  </div>`
+            remove(document.getElementById(`token2${playerTwo.tile}`))
+            playerTwo.tile = playerTwo.tile += 4;
+            document.getElementById(`tile${playerTwo.tile}`).innerHTML += `<div id="token2${playerTwo.tile}"> <img src="${playerTwo.playerToken}"> </div>`
             break;
         case 18:
             swal({
@@ -169,11 +184,21 @@ function playAgain() {
 }
 
 function updateBar(tile){
-    var mathWidth =  tile * 3.33
+    var mathWidth =  tile * 3.33;
     var elem = document.getElementById("myBar");
     var displayProgress = document.getElementById("barProgress");
     elem.style.width = mathWidth + "%";
     var roundWidth = Math.ceil(mathWidth)
     displayProgress.innerHTML = "";
     displayProgress.innerHTML += `<p>Love Meter Match Progress: ${roundWidth}%</p>`;
+}
+
+function updateBarUnmatch(tile){
+    var mathWidth = tile * 3.33;
+    var elem = document.getElementById("myBarUnmatch");
+    var displayProgress = document.getElementById("barProgressUnmatch");
+    elem.style.width = mathWidth + "%";
+    var roundWidth = Math.ceil(mathWidth);
+    displayProgress.innerHTML = "";
+    displayProgress.innerHTML += `<p>Unmatch Meter Match Progress: ${roundWidth}%</p>`;
 }

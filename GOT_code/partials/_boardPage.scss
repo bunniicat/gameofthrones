@@ -28,6 +28,7 @@
 
 .board-tile{
     border: 1px solid grey;
+    border-radius: 5px;
     width: 130px;
     height: 130px;
     margin: 10px;
@@ -48,10 +49,11 @@
 }
 
 .trap{
-    background: #BE93C5;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #7BC6CC, #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+    background-color: #f68f9d;
+    background-image: url(/resources/symbols/chat.svg);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #board-wrapper{
@@ -130,9 +132,6 @@
         position: absolute;
     }
   }
-
-  #barProgress{
-  }
   
   #myBar {
     width: 1%;
@@ -140,4 +139,31 @@
     background-color: #D75A4A;
     border-radius: 5px;
     border: 1px solid rgb(177, 74, 60);
+    transition: 0.4s ease;
+  }
+
+  .barWrapperUnmatch{
+      margin-top: 5px;
+  }
+
+  #myProgressUnmatch{
+      width: 100%;
+      height: 32px;
+      border-radius: 5px;
+      background-color: white;
+      position: relative;
+      img {
+          width: 6%;
+          right: 3px;
+          top: 2px;
+          position: absolute;      }
+  }
+
+  #myBarUnmatch{
+      width: 1%;
+      height: 30px;
+      background-color: black;
+      border-radius: 5px;
+      border: 1px solid black;
+      transition: 0.4s ease;
   }
