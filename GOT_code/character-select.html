@@ -10,12 +10,21 @@
   </head>
   <body>
     <div class="header">
-      <h1>[ Game of matches [</h1>
-      <h2 id="instructions">[ Help Jon Snow swipe right on the future love of his life [</h2>
+      <div id="selectedMatch"></div>
+      <div><h1>[ Game of matches [</h1>
+        <h2 id="instructions">[ Help Jon Snow swipe right on the future love of his life [</h2></div>
+      <div><button id="instr-btn-char">?</button></div>
     </div>
 
     <div  id="popup" class="popup">
       <div id="popupInfo" class="popupContent bounceIn">
+      </div>
+    </div>
+
+    <div id="instructionsCharacter" class="popup">
+      <div id="instructionsInfo" class="popupContent popupContentChar bounceIn">
+        <span id="closeCharX">close &#10008;</span>
+        <img src="resources/symbols/instructions-board.png" alt="game play instructions">
       </div>
     </div>
 

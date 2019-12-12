@@ -25,12 +25,18 @@ body {
   scroll-behavior: smooth;
 }
 
+.body-no-scroll {
+  overflow: hidden;
+}
+
 .header {
   text-align: center;
   text-transform: uppercase;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
 }
 .header h1 {
-  font-size: 60px;
+  font-size: 50px;
 }
 
 #instructions {
@@ -82,6 +88,38 @@ body {
   border: none;
   text-transform: uppercase;
   font-size: 30px;
+}
+
+#instr-btn-char {
+  color: #D75A4A;
+  background-color: white;
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 5px 11px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  float: right;
+}
+#instr-btn-char:hover {
+  box-shadow: 0px 0px 30px rgba(215, 90, 74, 0.687);
+}
+
+.popupContentChar {
+  background-color: #d38b94 !important;
+}
+
+.matchDisplay {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  margin: 20px;
+}
+.matchDisplay img {
+  width: 80%;
+}
+
+.selectedCharText {
+  grid-column: 1/3;
 }
 
 .headerBoard h1 {
@@ -301,11 +339,12 @@ body {
   display: none !important;
 }
 
-#closeX {
+#closeX, #closeCharX {
   color: black;
   float: right;
   margin-bottom: 10px;
   cursor: pointer;
+  font-family: "love", serif;
 }
 
 #closeQ {

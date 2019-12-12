@@ -217,11 +217,12 @@
       display: none !important;
   }
 
-  #closeX{
+  #closeX, #closeCharX{
       color: black;
       float: right;
       margin-bottom: 10px;
       cursor: pointer;
+      font-family: $h-font;
   }
 
   #closeQ{
