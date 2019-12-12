@@ -11,7 +11,9 @@
   </head>
   <body>
     <div class="headerBoard">
-      <h1>[ game of thrones [</h1>
+      <div><h1>[ game of matches [</h1></div>
+      <div></div>
+      <div class="headerBoardBtn"><button id="instr-btn">?</button><img src="resources/symbols/chest.svg" id="treasureChest"></div>
     </div>
 
     <div  id="popup" class="popup">
@@ -19,8 +21,27 @@
       </div>
     </div>
 
+    <div id="secretQ" class="popup">
+      <div id="secretQuestion" class="popupContent bounceIn">
+        <span id="closeQ">close &#10008;</span>
+        <span></span>
+        <h1>[ Answer right for a surprise [</h1>
+        <p>How long does it take to binge-watch every episode of Game of Thrones?</p>
+        <p>You only have 10 seconds to answer btw</p>
+        <form>
+          <input type="number" id="numbDays" placeholder="days">
+          <input type="number" id="numbHours" placeholder="hours">
+          <input type="number" id="numbMins" placeholder="minutes">
+          <br>
+          <button id="submitAnswer">Good Luck!</button>
+        </form>
+        <div id="resultQuestion"></div>
+      </div>
+    </div>
+
     <div id="instructions" class="popup">
       <div id="instructionsInfo" class="popupContent bounceIn">
+        <span id="closeX">close &#10008;</span>
         <img src="resources/symbols/instructions.png" alt="game play instructions">
       </div>
     </div>
@@ -41,7 +62,7 @@
       </div>
       <div class="barWrapperUnmatch">
           <div id="barProgressUnmatch">
-            <p>Unmatch Meter Match Progess: 0%</p>
+            <p>Unmatch Meter Progess: 0%</p>
           </div>
         <div id="myProgressUnmatch">
           <div id="myBarUnmatch"></div>
