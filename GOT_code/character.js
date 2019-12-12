@@ -76,5 +76,14 @@ function selectChar() {
     if ("yourMatch" in sessionStorage) {
         document.querySelector("#instructions").innerHTML = "";
         document.querySelector("#instructions").innerHTML += `<a href="board.html"><button class="start-btn"> time for jon snow to impress his match! </button></a> ` //renders start button if a match was selected
+        setTimeout(scrollToTop, 1000)
     }
 }
+
+const scrollToTop = () => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    if (c > 0) {
+      window.requestAnimationFrame(scrollToTop);
+      window.scrollTo(0, c - c / 12);
+    }
+  };
