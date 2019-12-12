@@ -192,7 +192,7 @@ function announceResult() {
         document.getElementById("winner").innerHTML += `<div class="winnerAnnouncement">Congratulations, ${winnerName}!</div>
         <div class="winnerToken"><img src="${winnerAvatar}" width="180"> <img src="resources/symbols/like.svg" width="150"> <img src="resources/chars/${yourMatch}.svg" width="180"></div>
         <div class="winnerDescription"><p>Jon Snow managed to woo his match, true love starts with a swipe to the right!</p></div>
-        <div class="playAgainBtn"><a href="character-select.html"><button onclick="playAgain()">Play again</button></a></div>`
+        <div class="playAgainBtn"><a href="index.html"><button onclick="playAgain()">Play again</button></a></div>`
     }
     if ("loser" in sessionStorage) {
         console.log("you lost")
@@ -202,7 +202,7 @@ function announceResult() {
         document.getElementById("winner").innerHTML += `<div class="winnerAnnouncement">Jon Snow got unmatched, ouch!</div>
         <div class="winnerToken"><img src="${loserAvatar}" width="180"></div>
         <div class="winnerDescription"><p>The potential love of his life decided he just was not the thing for them. After ghosting him they just unmatched his sorry ass.</p></div>
-        <div class="playAgainBtn"><a href="character-select.html"><button onclick="playAgain()">Play again</button></a></div>`
+        <div class="playAgainBtn"><a href="index.html"><button onclick="playAgain()">Play again</button></a></div>`
     }
 }
 
