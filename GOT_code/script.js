@@ -259,7 +259,7 @@ function closeQuest(){
     const popup = document.getElementById("secretQ");
     popup.classList.add("hide");
     popup.classList.remove("show");
-    remove(document.getElementById("treasureChest"));
+    remove(document.getElementById("treasureChest")); //dels the elem
 }
 
 document.getElementById("instr-btn").addEventListener("click", instruct);
@@ -303,3 +303,12 @@ document.getElementById("closeQ").addEventListener("click", closeQuest);
 document.getElementById("submitAnswer").addEventListener("click", validateAnswer)
 
 setTimeout(instruct, 1000);
+
+var timeleft = 10;
+var downloadTimer = setInterval(function(){
+  document.getElementById("progressBar").value = 10 - timeleft;
+  timeleft -= 1;
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+  }
+}, 1000);
