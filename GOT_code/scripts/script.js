@@ -96,7 +96,7 @@ function traps(player) {
             swal({
                 title: "OUCH: SEEN",
                 text: "Poor Jon Snow, they left him on seen.. his match is 5 steps closer to unmatching him and he need to step up his game.",
-                imageUrl: "https://puu.sh/EOlMl.jpg",
+                imageUrl: "https://puu.sh/FMeAc/012ff34aee.png",
                 imageWidth: 500,
                 imageHeight: 150,
                 showCancelButton: false,
@@ -114,7 +114,7 @@ function traps(player) {
             swal({
                 title: "HEARTHTHROB: COOL TITLE",
                 text: "Good job Jon Snow, flashing that title for what its worth, he impressed his match! He is 2 steps closer to finding the love of his life.",
-                imageUrl: "https://puu.sh/EOlQs.png",
+                imageUrl: "https://puu.sh/FMeAa/85eeffdd04.png",
                 imageWidth: 500,
                 imageHeight: 200,
                 showCancelButton: false,
@@ -131,7 +131,7 @@ function traps(player) {
             swal({
                 title: "OUCH: THE EX",
                 text: "Too bad Jon Snow, this moves his match 4 steps closer to unmatching him.",
-                imageUrl: "https://puu.sh/EOlRO.jpg",
+                imageUrl: "https://puu.sh/FMeA9/2c07984dfc.jpg",
                 imageWidth: 500,
                 imageHeight: 150,
                 showCancelButton: false,
@@ -149,7 +149,7 @@ function traps(player) {
             swal({
                 title: "HEARTHTHROB: FUNNY LINES",
                 text: "Jon Snow made his match laugh with his witty lines, he moves up 3 tiles!",
-                imageUrl: "https://puu.sh/EOlRo.jpg",
+                imageUrl: "https://puu.sh/FMeAb/794ce643cb.jpg",
                 imageWidth: 500,
                 imageHeight: 200,
                 showCancelButton: false,
@@ -166,7 +166,7 @@ function traps(player) {
             swal({
                 title: "OUCH: OVERSHARING",
                 text: "Ops, maybe he should keep his parental issues to himself, his match ain't no shrink. His match moves 4 steps closer to unmatching him.",
-                imageUrl: "https://puu.sh/EOlQQ.jpg",
+                imageUrl: "https://puu.sh/FMeAd/41a43b326d.jpg",
                 imageWidth: 500,
                 imageHeight: 270,
                 showCancelButton: false,
