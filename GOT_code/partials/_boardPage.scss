@@ -1,8 +1,40 @@
 .headerBoard h1{
     margin-left: 20px;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 40px;
     font-weight: 400;
+}
+
+.headerBoard{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,33.3%);
+    &Btn img{
+        width: 40px;
+        margin-top: 15px;
+        margin-right: 10px;
+        float: right;
+        opacity: 0.3;
+        transition: 0.3s ease;
+        &:hover{
+            opacity: 0.7;
+        }
+    }
+}
+
+#instr-btn{
+    color: #D75A4A;
+    background-color: white;
+    margin-top: 20px;
+    margin-right: 10px;
+    padding: 5px 11px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    float: right;
+    &:hover{
+        box-shadow: 0px 0px 30px rgba(215, 90, 74, 0.687);
+    }
 }
 
 .topbar{
@@ -157,7 +189,8 @@
           width: 6%;
           right: 3px;
           top: 2px;
-          position: absolute;      }
+          position: absolute;      
+        }
   }
 
   #myBarUnmatch{
@@ -169,6 +202,59 @@
       transition: 0.4s ease;
   }
 
-  #instructionsInfo img{
-    width: 70%;
+  #instructionsInfo{
+      margin-top: 10px;
+      & img{
+          width: 90%;
+      }
+  }
+
+  .show{
+      display: block !important;
+  }
+
+  .hide{
+      display: none !important;
+  }
+
+  #closeX, #closeCharX{
+      color: black;
+      float: right;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-family: $h-font;
+  }
+
+  #closeQ{
+    color: black;
+    float: right;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-family: $h-font;
+  }
+
+  #secretQuestion {
+      color: black;
+      & form input {
+          width: 150px;
+          margin: 10px;
+          height: 30px;
+          border-radius: 5px;
+          border: none;
+          padding: 5px;
+      }
+     & form button{
+        width: 150px;
+        margin: 10px;
+        border-radius: 5px;
+        border: none;
+        padding: 7px;
+        background-color: black;
+        color: white;
+        font-size: 20px;
+     } 
+  }
+
+  #resultQuestion{
+      margin-top: 20px;
   }

@@ -74,7 +74,49 @@ function selectChar() {
     sessionStorage.setItem("yourMatch", theData);
     popup.style.display = "none";
     if ("yourMatch" in sessionStorage) {
+        let yourMatch = sessionStorage.getItem("yourMatch");
         document.querySelector("#instructions").innerHTML = "";
         document.querySelector("#instructions").innerHTML += `<a href="board.html"><button class="start-btn"> time for jon snow to impress his match! </button></a> ` //renders start button if a match was selected
+        document.getElementById("selectedMatch").innerHTML = "";
+        document.getElementById("selectedMatch").innerHTML += `<div class="matchDisplay">
+        <p class="selectedCharText">Currently selected love match:</p>
+        <img src="resources/chars/${yourMatch}.svg" alt="player match"> <img src="resources/symbols/like.svg" alt="heart icon"></div>`
+        setTimeout(scrollToTop, 1000)
     }
 }
+
+const scrollToTop = () => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    if (c > 0) {
+      window.requestAnimationFrame(scrollToTop);
+      window.scrollTo(0, c - c / 10);
+    }
+  };
+
+  function instructCharacter() {
+    const popup = document.getElementById("instructionsCharacter");
+    popup.classList.remove("hide");
+    popup.classList.add("show");
+    document.body.classList.add("body-no-scroll");
+    if (popup.classList.contains('show')) {
+        window.onclick = function (event) {
+            if (event.target == popup) {
+                popup.classList.add("hide");
+                popup.classList.remove("show");
+                document.body.classList.remove("body-no-scroll");
+            }
+        }
+    }
+}
+
+function closePopChar(){
+    const popup = document.getElementById("instructionsCharacter");
+    popup.classList.add("hide");
+    popup.classList.remove("show");
+    document.body.classList.remove("body-no-scroll");
+}
+
+document.getElementById("instr-btn-char").addEventListener("click", instructCharacter);
+document.getElementById("closeCharX").addEventListener("click", closePopChar);
+
+setTimeout(instructCharacter, 1000);
